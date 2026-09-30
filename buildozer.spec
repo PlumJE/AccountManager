@@ -15,13 +15,13 @@ package.name = AccountManager
 package.domain = dev.PlumJE
 
 # (str) Source code where the main.py live
-source.dir = ./controllers
+source.dir = ./src
 
 # (list) Source files to include (leave empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,ttf
+source.include_exts = py,png,jpg,kv,atlas,ttf,TTF
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = views/*.kv, resources/fonts/*.ttf
+source.include_patterns = views/*.kv, resources/fonts/*.TTF
 
 # (list) Source files to exclude (leave empty to not exclude anything)
 #source.exclude_exts = spec
@@ -433,16 +433,16 @@ ios.codesign.allowed = false
 [buildozer]
 
 # (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
-log_level = 1
+log_level = 2
 
 # (int) Display warning if buildozer is run as root (0 = False, 1 = True)
 warn_on_root = 1
 
 # (str) Path to build artifact storage, absolute or relative to spec file
-# build_dir = ./.buildozer
+build_dir = ./.buildozer
 
 # (str) Path to build output (i.e. .apk, .aab, .ipa) storage
-# bin_dir = ./bin
+bin_dir = ./bin
 
 #-----------------------------------------------------------------------------
 #   Notes about using this file:

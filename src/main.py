@@ -14,9 +14,13 @@ from kivy.core.window import Window
 from kivy.core.text import LabelBase
 
 import sys
-from etcetera import rootPath
-sys.path.insert(0, rootPath())
+from pathlib import Path
 
+source_path = Path(__file__).resolve().parent
+sys.path.insert(0, str(source_path / 'controllers'))
+sys.path.insert(0, str(source_path))
+
+from etcetera import rootPath
 from accountList import AccountList
 from passwordSettings import PasswordSettings
 from logger import logger
@@ -27,21 +31,22 @@ class PswdMakerApp(App):
     # 앱을 그린다
     def build(self):
         Window.size = (400, 600)
-        LabelBase.register(name='Nanum', fn_regular=rootPath() + '/resources/fonts/NANUMGOTHIC.ttf')
+        LabelBase.register(name='Nanum', fn_regular=rootPath() + '/resources/fonts/NANUMGOTHIC.TTF')
 
         Builder.load_file(rootPath() + '/views/AccountList.kv')
         Builder.load_file(rootPath() + '/views/PasswordSettings.kv')
 
         self.__accountListScreen = AccountList()
         self.__pswdSettingsScreen = PasswordSettings()
-        
+
         self.__mainScreen = ScreenManager()
         self.__mainScreen.add_widget(self.__accountListScreen)
         self.__mainScreen.add_widget(self.__pswdSettingsScreen)
 
         return self.__mainScreen
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     try:
         PswdMakerApp().run()
     except:

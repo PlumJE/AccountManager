@@ -1,10 +1,12 @@
 # kivy/buildozer용 이미지 import
 FROM kivy/buildozer:latest
 
-# root가 아닌 계정으로 전환해서 안전하게 빌드 수행
+# root가 아닌 계정으로 전환해서 안전성 높임
+RUN useradd -m user
+RUN chown -R user:user /home/user
 USER user
 WORKDIR /home/user/app
 
-# 빌드
-ENTRYPOINT ["buildozer"]
-CMD ["-v", "android", "debug", "deploy", "run", "logcat"]
+# 컨테이너 실행
+ENTRYPOINT ["/bin/bash"]
+CMD ["-i"]
