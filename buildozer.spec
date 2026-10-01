@@ -42,7 +42,7 @@ version = 4.0
 
 # (list) Application requirements
 # Pin Python to a version that is known to work better with python-for-android in this build environment.
-requirements = python3==3.13.2, kivy
+requirements = python3==3.14.2,kivy
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes

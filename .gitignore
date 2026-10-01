@@ -1,1 +1,3 @@
 .buildozer/
+*.log
+*.pyc
