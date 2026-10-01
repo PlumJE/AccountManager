@@ -42,7 +42,7 @@ version = 4.0
 
 # (list) Application requirements
 # Pin Python to a version that is known to work better with python-for-android in this build environment.
-requirements = python3==3.13.2,kivy
+requirements = python3==3.13.2, kivy
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -118,7 +118,7 @@ android.api = 36
 #android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 29
+android.ndk = 28c
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
