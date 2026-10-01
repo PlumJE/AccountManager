@@ -20,10 +20,10 @@ source_path = Path(__file__).resolve().parent
 sys.path.insert(0, str(source_path / 'controllers'))
 sys.path.insert(0, str(source_path))
 
-from etcetera import rootPath
-from accountList import AccountList
-from passwordSettings import PasswordSettings
-from logger import logger
+from controllers.etcetera import rootPath
+from controllers.accountList import AccountList
+from controllers.passwordSettings import PasswordSettings
+from controllers.logger import logger
 
 
 # 앱 전체를 나타내는 클래스
