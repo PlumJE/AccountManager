@@ -30,7 +30,7 @@ from controllers.logger import logger
 class PswdMakerApp(App):
     # 앱을 그린다
     def build(self):
-        Window.size = (400, 600)
+        Window.size = (1000, 2000)
         LabelBase.register(name='Nanum', fn_regular=rootPath() + '/resources/fonts/NANUMGOTHIC.TTF')
 
         Builder.load_file(rootPath() + '/views/AccountList.kv')
