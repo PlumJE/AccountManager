@@ -1,51 +1,75 @@
 #:import dp kivy.metrics.dp
 
+# 스타일
+#:set TEXT_COLOR (0, 0, 0, 1)
+<Label>:
+    color: TEXT_COLOR
+
+<Button>:
+    color: TEXT_COLOR
+
+<TextInput>:
+    foreground_color: TEXT_COLOR
+
+# 본문
 <AccountList>
     on_pre_enter: root.loadAccountList()
     BoxLayout:
         orientation: 'vertical'
         Label:
             text: '계정 목록'
+            size_hint_y: None
             font_name: 'Nanum'
             font_size: '30dp'
-            size_hint_y: None
         BoxLayout:
-            size_hint_y: None
-            Label:
-                text: '주소'
-                font_name: 'Nanum'
-            Label:
-                text: '아이디'
-                font_name: 'Nanum'
-            Label:
-                text: '비밀번호'
-                font_name: 'Nanum'
-        ScrollView:
-            do_scroll_x: False
-            do_scroll_y: True
-            GridLayout:
-                id: accountList
-                cols: 3
+            orientation: 'vertical'
+            padding: '10dp', 0, '10dp', 0
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.5
+                Rectangle:
+                    pos: self.x + self.padding[0], self.y + self.padding[1]
+                    size: self.width - self.padding[0] - self.padding[2], self.height - self.padding[1] - self.padding[3]
+            BoxLayout:
+                height: '30dp'
                 size_hint_y: None
-                row_default_height: '50dp'
-                row_force_default: True
+                Label:
+                    text: '주소'
+                    font_name: 'Nanum'
+                Label:
+                    text: '아이디'
+                    font_name: 'Nanum'
+                Label:
+                    text: '비밀번호'
+                    font_name: 'Nanum'
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                GridLayout:
+                    id: accountList
+                    cols: 3
+                    size_hint_y: None
+                    row_default_height: '30dp'
+                    row_force_default: True
         BoxLayout:
+            height: '150dp'
             size_hint_y: None
-            Button:
-                text: '계정 추가'
-                font_name: 'Nanum'
-                on_press: root.createAccount()
-            Button:
-                text: '계정 삭제'
-                font_name: 'Nanum'
-                on_press: root.deleteAccount()
-        BoxLayout:
-            size_hint_y: None
-            Button:
-                text: '비밀번호 생성'
-                font_name: 'Nanum'
-                on_press: root.generatePassword()
-            Button:
-                text: '비밀번호 설정'
-                font_name: 'Nanum'
-                on_press: root.manager.current = 'pswdSettings'
+            padding: '10dp', '10dp', '10dp', '50dp'
+            GridLayout:
+                cols: 2
+                Button:
+                    text: '계정 추가'
+                    font_name: 'Nanum'
+                    on_press: root.createAccount()
+                Button:
+                    text: '계정 삭제'
+                    font_name: 'Nanum'
+                    on_press: root.deleteAccount()
+                Button:
+                    text: '비밀번호 생성'
+                    font_name: 'Nanum'
+                    on_press: root.generatePassword()
+                Button:
+                    text: '비밀번호 설정'
+                    font_name: 'Nanum'
+                    on_press: root.manager.current = 'pswdSettings'

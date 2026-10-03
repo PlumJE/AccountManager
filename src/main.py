@@ -1,7 +1,7 @@
 """
 작성자 : 외기러기
 최초 작성 시작 : 2024-05-03
-최근 작성 완료 : 2026-06-11
+최근 작성 완료 : 2026-10-04
 내가 만든 이 코드를 당신 또는 다른사람이 먼저 만들었다고 거짓말하지 마세요!!
 """
 
@@ -30,7 +30,8 @@ from controllers.logger import logger
 class PswdMakerApp(App):
     # 앱을 그린다
     def build(self):
-        Window.size = (1000, 2000)
+        # 배경색을 흰색으로 설정
+        Window.clearcolor = (0.8, 0.8, 0.8, 1)
         LabelBase.register(name='Nanum', fn_regular=rootPath() + '/resources/fonts/NANUMGOTHIC.TTF')
 
         Builder.load_file(rootPath() + '/views/AccountList.kv')
