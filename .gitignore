@@ -1,3 +1,4 @@
 .buildozer/
-*.log
 *.pyc
+*.log
+*.apk
