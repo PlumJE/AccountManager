@@ -1,14 +1,26 @@
-# kivy/buildozer용 이미지 import
+# Python, Buildozer 등이 포함된 kivy/buildozer 베이스 이미지 사용
+# uv 패키지 관리자 추가 (필요한 경우)
 FROM kivy/buildozer:latest
+COPY --from=ghcr.io/astral-sh/uv:0.13.0 /uv /uvx /bin/
 
-# root가 아닌 계정으로 전환해서 안전성 높임
-RUN useradd -m user
-RUN chown -R user:user /home/user
+# C 익스텐션 컴파일 및 깃 관리에 꼭 필요한 시스템 필수 헤더/라이브러리만 설치
+RUN apt-get update \
+&&  apt-get install -y \
+    python3-dev \
+    libjpeg-dev \
+    zlib1g-dev \
+    libpng-dev \
+    git \
+&&  rm -rf /var/lib/apt/lists/*
+
+# 권한 꼬임 방지를 위한 일반 사용자 계정 설정
+RUN ! id -u user && useradd -m user \
+&&  chown -R user:user /home/user \
+&&  chmod -R 755 /home/user
+
 USER user
-WORKDIR /home/user/app
+WORKDIR /home/user
 
 # 컨테이너 시작
-RUN /home/user/.venv/bin/python -m pip install --upgrade pip
-RUN /home/user/.venv/bin/python -m pip install --no-cache-dir appdirs "colorama>=0.3.3" jinja2 "sh>=2,<3.0" meson ninja build toml packaging setuptools "wheel~=0.43.0"
 ENTRYPOINT ["/bin/bash"]
 CMD ["-i"]
