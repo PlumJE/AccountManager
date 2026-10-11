@@ -19,7 +19,7 @@ RUN ! id -u user && useradd -m user \
 &&  chmod -R 755 /home/user
 
 USER user
-WORKDIR /home/user
+WORKDIR /home/user/account-manager
 
 # 컨테이너 시작
 ENTRYPOINT ["/bin/bash"]
