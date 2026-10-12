@@ -1,0 +1,12 @@
+.buildozer/
+.cache/
+.copilot/
+.dotnet/
+.local/
+.venv/
+.vscode-server/
+src/
+.bash_history
+*.apk
+*.log
+*.pyc
