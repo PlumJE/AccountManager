@@ -42,7 +42,7 @@ version = 4.0
 
 # (list) Application requirements
 # Pin Python to a version that is known to work better with python-for-android in this build environment.
-requirements = python3==3.14.2,kivy
+requirements = python3==3.14.2, kivy
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -109,7 +109,7 @@ fullscreen = 0
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-android.api = 36
+android.api = 34
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 24
