@@ -8,6 +8,7 @@
 src/
 .bash_history
 .env
+.gitconfig
 *.apk
 *.log
 *.pyc
