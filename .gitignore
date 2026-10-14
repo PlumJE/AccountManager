@@ -7,6 +7,7 @@
 .vscode-server/
 src/
 .bash_history
+.env
 *.apk
 *.log
 *.pyc
