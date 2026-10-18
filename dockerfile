@@ -37,10 +37,7 @@ RUN uv init \
 && uv add "kivy[base]"
 
 # 컨테이너 시작시 VNC 비밀번호를 매번 입력받고 서버를 시작 (Here-Doc 활용)
-RUN cat << 'EOF' > /home/user/entrypoint.sh
-#!/bin/bash
-
-# VNC 비밀번호 자동 생성 (환경변수 VNC_PASSWD가 설정되어 있으면 해당 값 사용, 없으면 '1234')
+RUN cat << 'EOF' > ~/entrypoint.sh
 #!/bin/bash
 
 # VNC 비밀번호 자동 생성 (환경변수 VNC_PASSWD가 설정되어 있으면 해당 값 사용, 없으면 '0000')
