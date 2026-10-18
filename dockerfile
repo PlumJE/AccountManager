@@ -15,6 +15,11 @@ RUN useradd -m user \
 USER user
 WORKDIR /home/user/${CONTAINER_NAME}
 
+# uv 환경을 마운트된 호스트 .venv와 분리
+ENV UV_PROJECT_ENVIRONMENT=/home/user/${CONTAINER_NAME}/.venv
+ENV VIRTUAL_ENV=/home/user/${CONTAINER_NAME}/.venv
+ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
+
 # user계정에서의 작업들
 RUN uv python pin 3.13 \
 && uv init \
