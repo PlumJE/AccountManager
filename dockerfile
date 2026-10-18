@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 # kivy/buildozer용 이미지 import
 FROM kivy/buildozer:latest
 ARG CONTAINER_NAME
