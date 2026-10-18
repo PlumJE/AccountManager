@@ -1,17 +1,33 @@
+#
 # kivy/buildozer용 이미지 import
+#
 FROM kivy/buildozer:latest
 ARG CONTAINER_NAME
 
-# root계정에서의 작업들
+
+
+#
+# root 계정에서의 작업들
+#
+
+# VNC를 위한 패키지 설치
 RUN apt-get update \
 && apt-get install -y --no-install-recommends xvfb x11vnc procps \
-&& rm -rf /var/lib/apt/lists/* \
-&& pip install --upgrade pip --no-cache-dir uv
+&& rm -rf /var/lib/apt/lists/*
 
-# root계정에서 user계정으로
+# uv 설치
+RUN pip install --upgrade pip --no-cache-dir uv
+
+# user계정 추가
 RUN useradd -m user \
 && mkdir -p /home/user/${CONTAINER_NAME} /home/user/.config \
 && chown -R user:user /home/user
+
+
+
+#
+# user계정에서의 작업들
+#
 USER user
 WORKDIR /home/user/${CONTAINER_NAME}
 
@@ -20,7 +36,7 @@ ENV UV_PROJECT_ENVIRONMENT=/home/user/${CONTAINER_NAME}/.venv
 ENV VIRTUAL_ENV=/home/user/${CONTAINER_NAME}/.venv
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
-# user계정에서의 작업들
+# uv 프로젝트 초기화 & kivy 설치
 RUN uv python pin 3.13 \
 && uv init \
 && uv add "kivy[base]"
@@ -39,6 +55,6 @@ RUN printf '%s\n' \
     '  x11vnc -display :0 -rfbauth "$HOME/.vnc/passwd" -forever -shared -rfbport "$VNC_PORT" -listen 0.0.0.0 >/tmp/x11vnc.log 2>&1 &' \
     'fi' >> /home/user/.bashrc
 
-# 컨테이너 시작
+# bash로 컨테이너 접속
 ENTRYPOINT ["/bin/bash"]
 CMD ["-i"]
