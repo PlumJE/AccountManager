@@ -34,8 +34,8 @@ ENV VIRTUAL_ENV=/home/user/${CONTAINER_NAME}/.venv
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
 # uv 프로젝트 초기화, kivy 지역 설치
-RUN uv init \
-&& uv python pin 3.13 \
+RUN uv python pin 3.13 \
+&& uv init \
 && uv add "kivy[base]"
 
 # 컨테이너 시작시 VNC 비밀번호를 매번 입력받고 서버를 시작 (Here-Doc 활용)
@@ -54,7 +54,7 @@ fi
 
 # x11vnc 서버 시작
 pkill -x x11vnc 2>/dev/null || true
-x11vnc -display :0 -rfbauth "$HOME/.vnc/passwd" -forever -shared -rfbport "${VNC_PORT:-5900}" -listen 0.0.0.0 >/tmp/x11vnc.log 2>&1 &
+x11vnc -display :0 -rfbauth "$HOME/.vnc/passwd" -forever -shared -rfbport 5900 -listen 0.0.0.0 >/tmp/x11vnc.log 2>&1 &
 
 # 전달된 CMD (예: /bin/bash) 실행
 exec "$@"
