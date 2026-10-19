@@ -1,0 +1,30 @@
+# Python-Kivy-related files
+__pycache__/
+build/
+dist/
+wheels/
+*.pyc
+*.pyo
+*.log
+*.egg-info
+
+# UV-related files
+.local
+
+# Buildozer-related files
+src
+.buildozer
+.bin
+
+# others
+.cache
+.codex
+.config
+.copilot
+.devcontainer
+.dotnet
+.vnc
+.vscode-server
+.bash_history
+.gitconfig
+hostcwd
