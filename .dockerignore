@@ -1,0 +1,39 @@
+# Git metadata
+.git
+.git/**
+
+# Python caches and build output
+__pycache__/
+*.py[cod]
+*.log
+*.egg-info/
+build/
+dist/
+wheels/
+
+# uv and virtual environments
+.venv/
+.venv*/
+.local/
+
+# Buildozer output
+.buildozer/
+.bin/
+src/
+
+# Local runtime and editor state
+hostcwd/
+.cache/
+.config/
+.codex/
+.copilot/
+.devcontainer/
+.dotnet/
+.vnc/
+.vscode-server/
+.bash_history
+.gitconfig
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
