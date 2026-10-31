@@ -1,0 +1,5 @@
+desktop:
+  resolution:
+    width: ${SCREEN_WIDTH}
+    height: ${SCREEN_HEIGHT}
+  allow_resize: false
